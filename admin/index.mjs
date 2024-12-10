@@ -22,7 +22,7 @@ const routeFiles = readdirSync(routesPath);
 // console.log(routeFiles); //['blogs.mjs','categories.mjs','checkout.mjs','highlights.mjs','products.mjs']
 routeFiles.map(async (file) => {
   const routeModule = await import(`./routes/${file}`);
-  app.use("/api", routeModule.default);
+  app.use("/", routeModule.default);
 });
 
 app.get("/", (req, res) => {
