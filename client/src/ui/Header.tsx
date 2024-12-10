@@ -43,7 +43,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div>
+    <div className="bg-white md:sticky md:top-0 z-50">
       <div className="max-w-screen-xl mx-auto h-20 flex items-center justify-between px-4">
         <Link to={"/"}>
           <img src={logo} alt="logo" className="w-44" />
