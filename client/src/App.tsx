@@ -1,4 +1,5 @@
 import BannerCategory from "./ui/BannerCategory";
+import Categories from "./ui/Categories";
 import Highlights from "./ui/Highlights";
 import HomeBanner from "./ui/HomeBanner";
 
@@ -8,6 +9,7 @@ function App() {
       <BannerCategory />
       <HomeBanner />
       <Highlights />
+      <Categories />
     </main>
   );
 }
