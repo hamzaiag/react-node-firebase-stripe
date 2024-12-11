@@ -23,13 +23,13 @@ const Categories = () => {
   return (
     <Container>
       <div className="mb-10">
-        <div className="flex items-center justify-between">
+        <div className="flex items-baseline justify-between">
           <Title text="Popular categories" />
           <Link
             to={"/category/tvAndAudio"}
             className="font-medium relative group overflow-hidden"
           >
-            View All Categories{" "}
+            View All Categories
             <span className="absolute bottom-0 left-0 w-full block h-[1px] bg-gray-600 -translate-x-[100%] group-hover:translate-x-0 duration-300" />
           </Link>
         </div>
