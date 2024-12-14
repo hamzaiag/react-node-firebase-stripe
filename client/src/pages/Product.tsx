@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getData } from "../lib";
 import Loading from "../ui/Loading";
 import Container from "../ui/Container";
+import _ from "lodash";
 
 const Product = () => {
   const [productData, setProductData] = useState<ProductProps | null>(null);
@@ -44,7 +45,21 @@ const Product = () => {
       setColor(productData?.colors[0]);
     }
   }, [productData]);
-  return <div>{loading ? <Loading /> : <Container></Container>}</div>;
+  return (
+    <div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Container>
+          {!!id && productData && _.isEmpty(allProducts) ? (
+            <div>Single Product</div>
+          ) : (
+            <div>All Product</div>
+          )}
+        </Container>
+      )}
+    </div>
+  );
 };
 
 export default Product;

@@ -10,7 +10,7 @@ const ProductList = () => {
         <div className="flex items-baseline justify-between">
           <Title text="Top Selling Products" />
           <Link
-            to="/products"
+            to="/product"
             className="font-medium relative group overflow-hidden"
           >
             View All Products
