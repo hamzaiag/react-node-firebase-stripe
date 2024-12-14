@@ -32,8 +32,11 @@ const Blog = () => {
                 className="w-full h-auto object-cover group-hover:scale-110 duration-300"
               />
             </div>
-            <div>
-              <p>{item?.title}</p>
+            <div className="mt-5">
+              <p className="text-sm uppercase font-medium text-gray-500">
+                {item?._base}
+              </p>
+              <p className="text-2xl font-bold line-clamp-1">{item?.title}</p>
             </div>
           </div>
         ))}
