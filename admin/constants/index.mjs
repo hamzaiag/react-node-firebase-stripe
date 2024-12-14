@@ -154,7 +154,7 @@ export const blogsData = [
     _id: 4002,
     image: "https://i.ibb.co/wzNpcwp/blogTwo.webp",
     title: "Setup your surround sound speaker",
-    _base: "Samrt thing",
+    _base: "Smart thing",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi vitae minus atque ratione. Sequi eos aspernatur delectus officia nemo ipsum facere debitis fugiat eum, quod quia, eligendi nihil sapiente perferendis modi quisquam reiciendis minima esse dolorem, molestias aut? Eum, repudiandae sit ipsum officiis unde reprehenderit inventore odio doloremque recusandae nobis voluptatem ipsa atque, veritatis adipisci reiciendis.",
   },
