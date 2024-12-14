@@ -52,7 +52,31 @@ const Product = () => {
       ) : (
         <Container>
           {!!id && productData && _.isEmpty(allProducts) ? (
-            <div>Single Product</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="flex">
+                <div>
+                  {productData?.images?.map((item, index) => (
+                    <img
+                      src={item}
+                      alt="img"
+                      key={index}
+                      className={`w-24 cursor-pointer opacity-80 hover:opacity-100 duration-300 ${
+                        imgUrl === item &&
+                        "border border-gray-500 rounded-md opacity-100"
+                      }`}
+                      onClick={() => setImgUrl(item)}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <img src={imgUrl} alt="thumnail" />
+                </div>
+              </div>
+              <div>
+                <h2 className="text-3xl font-bold">{productData?.name}</h2>
+                <PriceTag />
+              </div>
+            </div>
           ) : (
             <div>All Product</div>
           )}
