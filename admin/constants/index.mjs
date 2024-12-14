@@ -15,7 +15,7 @@ const cat = {
 export const categories = [
   {
     _id: 1001,
-    name: "TV & Audio",
+    name: "TV & Audios",
     image: "https://i.ibb.co/kM0FR2h/cat-Tv-Audio.webp",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore.",
