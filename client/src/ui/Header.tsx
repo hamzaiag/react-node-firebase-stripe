@@ -26,7 +26,7 @@ const bottomNavigation = [
 ];
 
 const Header = () => {
-  const [isSearch, setIsSearch] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ const Header = () => {
     };
     fetchData();
   }, []);
+  console.log(searchText);
 
   return (
     <div className="bg-white md:sticky md:top-0 z-50">
@@ -53,15 +54,15 @@ const Header = () => {
             type="text"
             className="w-full rounded-full text-gray-900 text-lg placeholder:text-base placeholder:tracking-wide shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:font-normal focus:ring-2 focus:ring-gray-900 focus:outline-none py-2 px-5"
             placeholder="Search Product"
-            value={isSearch}
-            onChange={(e) => setIsSearch(e.target.value)}
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
           />
 
           {/* SEARCH BAR */}
-          {isSearch ? (
+          {searchText ? (
             <IoCloseOutline
               className="absolute right-3 top-2.5 w-6 h-6 text-gray-500"
-              onClick={() => setIsSearch("")}
+              onClick={() => setSearchText("")}
             />
           ) : (
             <IoSearchOutline className="absolute right-3 top-2.5 w-6 h-6 text-gray-500" />
