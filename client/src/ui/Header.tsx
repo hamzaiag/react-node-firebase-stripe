@@ -14,7 +14,8 @@ import {
   MenuItems,
   Transition,
 } from "@headlessui/react";
-import { CategoryProps } from "../../type";
+import { CategoryProps, ProductProps } from "../../type";
+import ProductCard from "./ProductCard";
 
 const bottomNavigation = [
   { title: "Home", link: "/" },
@@ -28,6 +29,29 @@ const bottomNavigation = [
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const endPoint = `${config.baseUrl}/products`;
+
+      try {
+        const data = await getData(endPoint);
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const filtered = products.filter((item: ProductProps) =>
+      item.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  }, [products, searchText]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +65,6 @@ const Header = () => {
     };
     fetchData();
   }, []);
-  console.log(searchText);
 
   return (
     <div className="bg-white md:sticky md:top-0 z-50">
@@ -61,14 +84,35 @@ const Header = () => {
           {/* SEARCH BAR */}
           {searchText ? (
             <IoCloseOutline
-              className="absolute right-3 top-2.5 w-6 h-6 text-gray-500"
+              className="absolute right-3 top-2.5 w-6 h-6 text-gray-500 cursor-pointer"
               onClick={() => setSearchText("")}
             />
           ) : (
             <IoSearchOutline className="absolute right-3 top-2.5 w-6 h-6 text-gray-500" />
           )}
         </div>
-
+        {searchText && (
+          <div
+            className="absolute top-20 left-0 w-full max-h-[500px] px-10 py-5 bg-white z-20 overflow-y-scroll text-black shadow-lg shadow-blue-500 scrollbar-hide"
+            onClick={() => setSearchText("")}
+          >
+            {filteredProducts.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                {filteredProducts?.map((item: ProductProps) => (
+                  <ProductCard key={item?._id} item={item} />
+                ))}
+              </div>
+            ) : (
+              <div className="py-10 bg-gray-50 w-full flex items-center justify-center border border-gray-600 rounded-md">
+                <p className="text-xl font-normal">
+                  Nothing matches with your search keywords{" "}
+                  <span className="underline underline-offset-2 decoration-[1px] text-red-500 font-semibold">{`(${searchText})`}</span>
+                </p>
+                . Please try again
+              </div>
+            )}
+          </div>
+        )}
         {/* MENU BAR */}
         <div className="flex items-center gap-x-6 text-2xl">
           <Link to={"/profile"}>
