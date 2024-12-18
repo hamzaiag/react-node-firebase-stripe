@@ -62,7 +62,7 @@ const ProductCard = ({ item }: Props) => {
           <MdOutlineStarOutline />
           <MdOutlineStarOutline />
         </div>
-        <AddToCartBtn>Add to Cart</AddToCartBtn>
+        <AddToCartBtn product={item}>Add to Cart</AddToCartBtn>
       </div>
       <Transition appear show={isOpen}>
         <Dialog
